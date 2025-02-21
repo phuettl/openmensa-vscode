@@ -1,0 +1,94 @@
+{
+    "name": "openmensa-vscode",
+    "displayName": "Mensa",
+    "description": "Fetch and display meal plans from openmensa.org",
+    "version": "0.0.1",
+    "icon": "resources/icon.png",
+    "repository": "https://github.com/phuettl/openmensa-vscode",
+    "publisher": "phuettl",
+    "engines": {
+        "vscode": "^1.97.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [],
+    "main": "./out/extension.js",
+    "contributes": {
+        "configuration": {
+            "title": "Mensa Settings",
+            "properties": {
+                "openmensa-vscode.canteenId": {
+                    "type": "string",
+                    "default": "",
+                    "description": "The default OpenMensa Canteen ID"
+                }
+            }
+        },
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "openmensaContainer",
+                    "title": "Mensa",
+                    "icon": "resources/icon.png"
+                }
+            ]
+        },
+        "views": {
+            "openmensaContainer": [
+                {
+                    "id": "openmensaTreeView",
+                    "name": "Meal Plan",
+                    "icon": "resources/icon.png"
+                }
+            ]
+        },
+        "commands": [
+            {
+                "command": "openmensa-vscode.fetchMenuForDay",
+                "title": "Mensa: Fetch Canteen Menu"
+            },
+            {
+                "command": "openmensa-vscode.changeCanteen",
+                "title": "Mensa: Change Canteen",
+                "icon": "$(gear)"
+            }
+        ],
+        "menus": {
+            "view/title": [
+                {
+                    "command": "openmensa-vscode.changeCanteen",
+                    "when": "view == openmensaTreeView",
+                    "group": "navigation"
+                }
+            ]
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "npm run check-types && node esbuild.js",
+        "check-types": "tsc --noEmit",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src",
+        "test": "vscode-test",
+        "package": "npm run check-types && node esbuild.js --production"
+    },
+    "devDependencies": {
+        "@types/date-fns": "^2.5.3",
+        "@types/mocha": "^10.0.10",
+        "@types/node": "20.x",
+        "@types/vscode": "^1.97.0",
+        "@typescript-eslint/eslint-plugin": "^8.22.0",
+        "@typescript-eslint/parser": "^8.22.0",
+        "@vscode/test-cli": "^0.0.10",
+        "@vscode/test-electron": "^2.4.1",
+        "esbuild": "^0.25.2",
+        "eslint": "^9.19.0",
+        "typescript": "^5.7.3"
+    },
+    "dependencies": {
+        "date-fns": "^4.1.0",
+        "node-fetch": "^3.3.2"
+    }
+}
