@@ -1,6 +1,6 @@
 # openmensa-vscode
 
-View daily meal plans from [OpenMensa](https://openmensa.org/).a
+View daily meal plans from [OpenMensa](https://openmensa.org/).
 
 ## Features
 
