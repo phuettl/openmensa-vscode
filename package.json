@@ -2,11 +2,11 @@
     "name": "openmensa-vscode",
     "displayName": "Mensa",
     "description": "Fetch and display meal plans from openmensa.org",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "icon": "resources/icon.png",
     "repository": {
-        "type": "github",
-        "url": "https://github.com/phuettl/openmensa-vscode"
+        "type": "git",
+        "url": "https://github.com/phuettl/openmensa-vscode.git"
     },
     "publisher": "phuettl",
     "engines": {
